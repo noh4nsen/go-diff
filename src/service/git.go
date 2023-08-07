@@ -45,6 +45,6 @@ func execRevParse(branch string) {
 	cmd := exec.Command("git", "rev-parse", "--verify", branch)
 
 	output, err := cmd.Output()
-	helper.CheckAndLogError("Error verifying branch. %v", err)
+	helper.CheckAndLogError("Error verifying branch: %v", err)
 	log.Println("Hash: ", string(output))
 }
