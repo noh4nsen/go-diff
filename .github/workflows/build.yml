@@ -16,6 +16,12 @@ jobs:
             - name: Build
               run: |
                 cd src
+                make clean
                 make build
-                cd ../build
-                ls -la
+
+            - name: Commit Artifacts
+              run: |
+                git config --global user.name "noh4nsen"
+                git config --global user.email "noh4nsen@gmail.com"
+                git commit -am "Chore: update compiled binaries"
+                git push
