@@ -25,7 +25,13 @@ func CheckGitInstallation() {
 }
 
 func CheckBranchesExists(args []string) {
-	for _, value := range args {
-		log.Println(value)
+	for index, value := range args {
+		if index != 0 {
+			cmd := exec.Command("git", "rev-parse", "--verify", value)
+
+			output, err := cmd.Output()
+			helper.CheckAndLogError("Error verifying branch: %v", err)
+			log.Println("Branch: ", string(output))
+		}
 	}
 }
