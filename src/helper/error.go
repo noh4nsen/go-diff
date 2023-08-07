@@ -7,3 +7,9 @@ func CheckAndLogError(errMessage string, err error) {
 		log.Fatalf(errMessage, err)
 	}
 }
+
+func CheckMatchAndLogError(errMessage string, err string, match bool) {
+	if match == false {
+		log.Fatalf(errMessage, err)
+	}
+}
