@@ -3,7 +3,7 @@ name: Build go-diff
 on: 
     push:
         branches:
-            - release/*
+            - main
 permissions:
     contents: write
 
