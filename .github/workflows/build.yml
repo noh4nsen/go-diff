@@ -3,7 +3,7 @@ name: Build go-diff
 on: 
     push:
         branches:
-            - main
+            - release/**
 permissions:
     contents: write
 
@@ -30,3 +30,9 @@ jobs:
                 git config --global user.email "noh4nsen@gmail.com"
                 git commit -am "Chore: build workflow updated compiled binaries"
                 git push
+
+            - name: Git tag
+              run: |
+                export version=$(git branch --show-current | sed 's:.*/::')
+                git tag -a $version -m $version
+                git push origin --tags
