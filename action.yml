@@ -21,5 +21,10 @@ runs:
   steps:
     - name: Execute Go-diff
       id: go_diff
-      run: echo "modified=$(./build/go-diff ${{ inputs.head_branch }} ${{ inputs.base_branch }})" >> GITHUB_OUTPUT
+      run: |
+        export output=$(./build/go-diff ${{ inputs.head_branch }} ${{ inputs.base_branch }})
+        if [[ -z "$output" ]]; then
+          exit 0
+        fi
+        echo "modified=output" >> GITHUB_OUTPUT
       shell: bash
