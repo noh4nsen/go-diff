@@ -1,6 +1,9 @@
 name: Build go-diff
 
-on: [workflow_dispatch]
+on: 
+    push:
+        branches:
+            - release/*
 permissions:
     contents: write
 
