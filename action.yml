@@ -1,0 +1,25 @@
+name: Go-diff
+description: Action that returns a JSON containing an array of modified files and an array of modified directories.
+
+inputs:
+  head_branch:
+    description: "Head branch for comparison"
+    required: true
+    default: dev
+  base_branch:
+    description: "Base branch for comparison"
+    required: true
+    default: main
+
+outputs:
+  modified_output:
+    description: "JSON containing ModifiedFiles (array containing modified files) and ModifiedDirs (array containing modified directories)"
+    value: ${{ steps.go_diff.outputs.modified }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Execute Go-diff
+      id: go_diff
+      run: echo "modified=$(./build/go-diff ${{ inputs.head_branch }} ${{ inputs.base_branch }})" >> GITHUB_OUTPUT
+      shell: bash
