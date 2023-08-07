@@ -30,7 +30,7 @@ func CheckBranchesExists(args []string) {
 			cmd := exec.Command("git", "rev-parse", "--verify", value)
 
 			output, err := cmd.Output()
-			helper.CheckAndLogError("Error verifying branch: %v", err)
+			helper.CheckAndLogError("Error verifying branch! %v", err)
 			log.Println("Branch: ", string(output))
 		}
 	}
