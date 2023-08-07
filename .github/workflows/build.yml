@@ -1,6 +1,8 @@
 name: Build go-diff
 
-on: [workflow_dispatch]
+on: [workflow_dispatch, push]
+permissions:
+    contents: write
 
 jobs:
     build:
@@ -23,5 +25,5 @@ jobs:
               run: |
                 git config --global user.name "noh4nsen"
                 git config --global user.email "noh4nsen@gmail.com"
-                git commit -am "Chore: update compiled binaries"
+                git commit -am "Chore: build workflow updated compiled binaries"
                 git push
