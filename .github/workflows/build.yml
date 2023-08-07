@@ -26,6 +26,7 @@ jobs:
           run: |
             git config --global user.name "noh4nsen"
             git config --global user.email "noh4nsen@gmail.com"
+            git add .
             git commit -am "Chore: build workflow updated compiled binaries"
             git push
         - name: Git tag
