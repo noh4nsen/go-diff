@@ -3,11 +3,11 @@ description: Action that returns a JSON containing an array of modified files an
 
 inputs:
   head_branch:
-    description: "Head branch for comparison"
+    description: "Head branch for comparison. Only alphanumeric, dash and underscores are accepted."
     required: true
     default: dev
   base_branch:
-    description: "Base branch for comparison"
+    description: "Base branch for comparison. Only alphanumeric, dash and underscores are accepted."
     required: true
     default: main
 
