@@ -22,8 +22,8 @@ runs:
     - name: Execute Go-diff
       id: go_diff
       run: |
-        ls -la
-        export output=$(./build/go-diff ${{ inputs.head_branch }} ${{ inputs.base_branch }})
+        wget -o- https://github.com/noh4nsen/go-diff/releases/download/0.3.0/go-diff-0.3.0
+        export output=$(./build/go-diff-0.3.0 ${{ inputs.head_branch }} ${{ inputs.base_branch }})
         if [[ -z "$output" ]]; then
           exit 0
         fi
