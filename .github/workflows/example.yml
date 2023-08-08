@@ -1,16 +1,16 @@
-name: Test Go-diff
+name: Usage example
 
 on: [workflow_dispatch]
 
 jobs:
-    go-diff:
+    diff:
         runs-on: ubuntu-latest
         steps:
           - name: Checkout code
             uses: actions/checkout@v3
           - name: Test Go-diff
             id: test-go-diff
-            uses: noh4nsen/go-diff@272f7cb6dfe826383b1ecc39a5466990603dcdaa
+            uses: noh4nsen/go-diff@75547ee7ffc300ac3dd1f73785cf929a0c48f664
             with:
               head_branch: dev
               base_branch: main
