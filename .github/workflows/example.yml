@@ -1,0 +1,21 @@
+name: Test Go-diff
+
+on: [workflow_dispatch]
+
+jobs:
+    go-diff:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v3
+          - name: Test Go-diff
+            id: test-go-diff
+            uses: noh4nsen/go-diff@272f7cb6dfe826383b1ecc39a5466990603dcdaa
+            with:
+              head_branch: dev
+              base_branch: main
+          - name: Print output
+            run: |
+              echo ${{ steps.test-go-diff.outputs.modified_files }}
+              echo ${{ steps.test-go-diff.outputs.modified_dirs }}
+              echo ${{ steps.test-go-diff.outputs.modified_projects }}
