@@ -23,7 +23,7 @@ runs:
       id: go_diff
       run: |
         wget -o- https://github.com/noh4nsen/go-diff/releases/download/0.3.0/go-diff-0.3.0
-        export output=$(./build/go-diff-0.3.0 ${{ inputs.head_branch }} ${{ inputs.base_branch }})
+        export output=$(./go-diff-0.3.0 ${{ inputs.head_branch }} ${{ inputs.base_branch }})
         if [[ -z "$output" ]]; then
           exit 0
         fi
