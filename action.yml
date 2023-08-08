@@ -12,8 +12,13 @@ inputs:
     default: main
 
 outputs:
-  modified_output:
-    description: "JSON containing ModifiedFiles (array containing modified files), ModifiedDirs (array containing modified directories) and ModifiedProjects (array containing modified directories at root level)"
+  modified_files:
+    description: "Array containing modified files"
+  modified_dirs:
+    description: "Array containing modified directories"
+  modified_projects:
+    description: "Array containing modified directories at root level"
+
 
 runs:
   using: 'docker'
