@@ -12,20 +12,17 @@ inputs:
     default: main
 
 outputs:
-  modified_output:
-    description: "JSON containing ModifiedFiles (array containing modified files), ModifiedDirs (array containing modified directories) and ModifiedProjects (array containing modified directories at root level)"
-    value: ${{ steps.go_diff.outputs.modified }}
+  modified_files:
+    description: "Array containing modified files"
+  modified_dirs:
+    description: "Array containing modified directories"
+  modified_projects:
+    description: "Array containing modified directories at root level"
+
 
 runs:
-  using: "composite"
-  steps:
-    - name: Execute Go-diff
-      id: go_diff
-      run: |
-        ls -la
-        export output=$(./build/go-diff ${{ inputs.head_branch }} ${{ inputs.base_branch }})
-        if [[ -z "$output" ]]; then
-          exit 0
-        fi
-        echo "modified=output" >> GITHUB_OUTPUT
-      shell: bash
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.head_branch }}
+    - ${{ inputs.base_branch }}
