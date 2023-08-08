@@ -13,7 +13,7 @@ inputs:
 
 outputs:
   modified_output:
-    description: "JSON containing ModifiedFiles (array containing modified files) and ModifiedDirs (array containing modified directories)"
+    description: "JSON containing ModifiedFiles (array containing modified files), ModifiedDirs (array containing modified directories) and ModifiedProjects (array containing modified directories at root level)"
     value: ${{ steps.go_diff.outputs.modified }}
 
 runs:
@@ -22,6 +22,7 @@ runs:
     - name: Execute Go-diff
       id: go_diff
       run: |
+        ls -la
         export output=$(./build/go-diff ${{ inputs.head_branch }} ${{ inputs.base_branch }})
         if [[ -z "$output" ]]; then
           exit 0

@@ -14,11 +14,15 @@ func ExtractChanges(output string) model.Changes {
 			continue
 		}
 		dir := extractDirectory(file)
+		project := extractProject(dir)
 
 		changes.ModifiedFiles = append(changes.ModifiedFiles, file)
 
 		if !contains(changes.ModifiedDirs, dir) {
 			changes.ModifiedDirs = append(changes.ModifiedDirs, dir)
+		}
+		if !contains(changes.ModifiedProjects, project) {
+			changes.ModifiedProjects = append(changes.ModifiedProjects, project)
 		}
 	}
 
@@ -26,14 +30,25 @@ func ExtractChanges(output string) model.Changes {
 }
 
 func extractDirectory(file string) string {
-	var dir string
+	var path string
 	index := strings.LastIndex(file, "/")
 	if index > -1 {
-		dir = file[:index]
+		path = file[:index]
 	} else {
-		dir = "."
+		path = "."
 	}
-	return dir
+	return path
+}
+
+func extractProject(dir string) string {
+	var path string
+	index := strings.LastIndex(dir, "/")
+	if index > -1 {
+		path = dir[:index]
+	} else {
+		path = dir
+	}
+	return path
 }
 
 func contains(slice []string, item string) bool {
