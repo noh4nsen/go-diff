@@ -22,6 +22,7 @@ runs:
     - name: Execute Go-diff
       id: go_diff
       run: |
+        ls -la
         export output=$(./build/go-diff ${{ inputs.head_branch }} ${{ inputs.base_branch }})
         if [[ -z "$output" ]]; then
           exit 0
