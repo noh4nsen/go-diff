@@ -1,0 +1,20 @@
+name: Test Go-diff
+
+on: 
+    push:
+        branches:
+            - dev
+
+jobs:
+    go-diff:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Test Go-diff
+              id: test-go-diff
+              uses: noh4nsen/go-diff@0.2.0
+              with:
+                head_branch: dev
+                base_branch: main
+            - name: Print output
+              run: |
+                echo ${{ steps.go-diff.outputs.modified_output }}
