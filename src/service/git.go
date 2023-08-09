@@ -30,6 +30,7 @@ func CheckBranches(args []string) {
 	for index, branch := range args {
 		if index > 0 && index < 3 {
 			execCheckout(branch)
+			execPull(branch)
 			execRevParse(branch)
 		}
 	}
@@ -45,9 +46,17 @@ func execFetch() {
 func execCheckout(branch string) {
 	cmd := exec.Command("git", "checkout", branch)
 
-	output, err := cmd.Output()
+	_, err := cmd.Output()
 	helper.CheckAndLogError("Error checking out branch: %v", err)
-	log.Println("Checkout branch: ", branch, "---", string(output))
+	log.Println("Checkout branch: ", branch)
+}
+
+func execPull(branch string) {
+	cmd := exec.Command("git", "pull", branch)
+
+	_, err := cmd.Output()
+	helper.CheckAndLogError("Error pulling branch: %v", err)
+	log.Println("Pull branch: ", branch)
 }
 
 func execRevParse(branch string) {
