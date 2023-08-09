@@ -1,14 +1,10 @@
 #!/bin/sh
 
-set -eoux pipefail
+set -eou pipefail
 
 output=$(/go-diff $1 $2) 
 
-modified_files=$(echo $output | jq .modifiedFiles)
-modified_dirs=$(echo $output | jq .modifiedDirs)
-modified_projects=$(echo $output | jq .modifiedProjects)
-
-echo "json_output=$output" >> $GITHUB_OUTPUT
-echo "modified_files="$modified_files"" >> $GITHUB_OUTPUT
-echo "modified_dirs="$modified_dirs"" >> $GITHUB_OUTPUT
-echo "modified_projects="$modified_projects"" >> $GITHUB_OUTPUT
+echo "full_output='$(echo $output)'" >> $GITHUB_OUTPUT
+echo "modified_files='$(jq -n -c --argjson files "$(echo $output | jq -r .modifiedFiles)" '$ARGS.named')'" >> $GITHUB_OUTPUT
+echo "modified_dirs='$(jq -n -c --argjson directories "$(echo $output | jq -r .modifiedDirs)" '$ARGS.named')'" >> $GITHUB_OUTPUT
+echo "modified_projects='$(jq -n -c --argjson projects "$(echo $output | jq -r .modifiedProjects)" '$ARGS.named')'" >> $GITHUB_OUTPUT

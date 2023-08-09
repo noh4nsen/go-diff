@@ -46,5 +46,5 @@ func execRevParse(branch string) {
 
 	output, err := cmd.Output()
 	helper.CheckAndLogError("Error verifying branch: %v", err)
-	log.Println("Hash: ", string(output))
+	log.Println("Comparing on hash: ", string(output))
 }

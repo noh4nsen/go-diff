@@ -16,6 +16,7 @@ jobs:
               base_branch: main
           - name: Print output
             run: |
+              echo ${{ steps.test-go-diff.outputs.full_output }}
               echo ${{ steps.test-go-diff.outputs.modified_files }}
               echo ${{ steps.test-go-diff.outputs.modified_dirs }}
               echo ${{ steps.test-go-diff.outputs.modified_projects }}
