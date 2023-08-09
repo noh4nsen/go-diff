@@ -4,6 +4,8 @@ RUN apk update &&\
     apk upgrade &&\
     apk add git jq
 
+RUN ls -la
+
 COPY ./build/go-diff /go-diff
 COPY entrypoint.sh /entrypoint.sh
 
