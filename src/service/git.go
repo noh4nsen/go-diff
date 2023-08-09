@@ -52,7 +52,7 @@ func execCheckout(branch string) {
 }
 
 func execPull(branch string) {
-	cmd := exec.Command("git", "pull", branch)
+	cmd := exec.Command("git", "pull")
 
 	_, err := cmd.Output()
 	helper.CheckAndLogError("Error pulling branch: %v", err)
