@@ -37,8 +37,7 @@ func CheckBranches(args []string) {
 
 func execFetch() {
 	cmd := exec.Command("git", "fetch", "--all")
-	output, err := cmd.Output()
-	log.Println(output)
+	_, err := cmd.Output()
 	helper.CheckAndLogError("Error executing 'git fetch' command: %v", err)
 	log.Println("Executed: 'git fetch'")
 }
