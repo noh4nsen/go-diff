@@ -10,7 +10,7 @@ jobs:
             uses: actions/checkout@v3
           - name: Test Go-diff
             id: test-go-diff
-            uses: noh4nsen/go-diff@1.1.0
+            uses: noh4nsen/go-diff@1.2.2
             with:
               head_branch: dev
               base_branch: main
