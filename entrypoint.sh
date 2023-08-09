@@ -2,7 +2,12 @@
 
 set -eou pipefail
 
-output=$(/go-diff $1 $2) 
+git config --global user.name "go-diff" &&\
+git config --global user.email "<>" &&\
+git config --global --add safe.directory /github/workspace
+
+cd /github/workspace
+output=$(go-diff $1 $2) 
 
 echo "full_output='$(echo $output)'" >> $GITHUB_OUTPUT
 echo "modified_files='$(jq -n -c --argjson files "$(echo $output | jq -r .modifiedFiles)" '$ARGS.named')'" >> $GITHUB_OUTPUT
