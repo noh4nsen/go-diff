@@ -26,9 +26,10 @@ func CheckGitInstallation() {
 	log.Println("Git is installed: ", gitPath)
 }
 
-func CheckBranchesExists(args []string) {
+func CheckBranches(args []string) {
 	for index, branch := range args {
 		if index > 0 && index < 3 {
+			execCheckout(branch)
 			execRevParse(branch)
 		}
 	}
@@ -39,6 +40,14 @@ func execFetch() {
 	_, err := cmd.Output()
 	helper.CheckAndLogError("Error executing 'git fetch' command: %v", err)
 	log.Println("Executed: 'git fetch'")
+}
+
+func execCheckout(branch string) {
+	cmd := exec.Command("git", "checkout", branch)
+
+	output, err := cmd.Output()
+	helper.CheckAndLogError("Error checking out branch: %v", err)
+	log.Println("Checkout branch: ", branch, "---", string(output))
 }
 
 func execRevParse(branch string) {

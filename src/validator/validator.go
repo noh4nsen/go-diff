@@ -11,7 +11,7 @@ func Validate(args []string) {
 	checkInputArgs(args)
 
 	service.CheckGitInstallation()
-	service.CheckBranchesExists(args)
+	service.CheckBranches(args)
 }
 
 func checkInputArgs(args []string) {
