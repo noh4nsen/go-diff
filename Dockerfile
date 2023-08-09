@@ -4,7 +4,6 @@ RUN apk update &&\
     apk upgrade &&\
     apk add git jq
 
-COPY ./build/go-diff /go-diff
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
