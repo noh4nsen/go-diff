@@ -17,5 +17,5 @@ func EncodeToJson(changes model.Changes) string {
 func prettyPrintOutput(changes model.Changes) {
 	prettyJson, err := json.MarshalIndent(changes, "", "    ")
 	CheckAndLogError("Error encoding to JSON: %v", err)
-	log.Println((string(prettyJson)))
+	log.Println("Output: ", (string(prettyJson)))
 }
