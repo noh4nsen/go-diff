@@ -4,9 +4,9 @@ set -eou pipefail
 
 git config --global user.name "go-diff" &&\
 git config --global user.email "<>" &&\
-git config --global --add safe.directory /github/workspace
+git config --global --add safe.directory $GITHHUB_WORKSPACE
 
-cd /github/workspace
+cd $GITHUB_WORKSPACE
 output=$(go-diff $1 $2) 
 
 echo "full_output='$(echo $output)'" >> $GITHUB_OUTPUT
