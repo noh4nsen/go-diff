@@ -9,8 +9,6 @@ import (
 )
 
 func ExecDiff(args []string) model.Changes {
-	execFetch()
-
 	cmd := exec.Command("git", "diff", "--name-only", args[1], args[2])
 
 	output, err := cmd.Output()
@@ -29,6 +27,7 @@ func CheckGitInstallation() {
 func CheckBranches(args []string) {
 	for index, branch := range args {
 		if index > 0 && index < 3 {
+			execFetch()
 			execCheckout(branch)
 			execPull(branch)
 			execRevParse(branch)
