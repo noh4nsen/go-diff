@@ -1,2 +1,5 @@
 [general]
-ignore=B6
+ignore=B6, T3
+
+[title-match-regex]
+regex = ^(?:feat|fix|docs|style|refactor|perf|test|chore)\(.*?\):\s.*
