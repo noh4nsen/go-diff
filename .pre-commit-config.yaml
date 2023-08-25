@@ -3,3 +3,5 @@ repos:
     rev:  v0.19.1
     hooks:
     -   id: gitlint
+        name: "Commit message format"
+        description: "Checks if commit message is in regex format: (feat(PENG|DATA):|fix:|chore:|test:|docs:)"
