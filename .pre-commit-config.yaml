@@ -3,8 +3,3 @@ repos:
     rev:  v0.19.1
     hooks:
     -   id: gitlint
-        name: gitlint
-        language: python
-        entry: gitlint
-        args: [--staged, --msg-filename]
-        stages: [commit-msg]
