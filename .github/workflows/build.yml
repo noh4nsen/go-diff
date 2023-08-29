@@ -26,6 +26,8 @@ jobs:
           run: |
             git config --global user.name "noh4nsen"
             git config --global user.email "noh4nsen@gmail.com"
+            git fetch
+            git pull
         - name: Commit Artifacts
           run: |
             git add .
