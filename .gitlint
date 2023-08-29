@@ -1,0 +1,8 @@
+[general]
+ignore=B6, T3
+
+[title-match-regex]
+regex = ^(feat\((PENG|DATA|ISSUE)-\d+\):|fix:|chore:|test:|docs:).*
+
+[title-min-length]
+min-length = 3
